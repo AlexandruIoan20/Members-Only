@@ -3,7 +3,7 @@ exports.post_list = (req, res, next) => {
 };
 
 exports.post_detail = (req, res, next) => {
-    res.send(`NOT IMPLEMENTED: post detail: ${req.params.id}`)
+    res.send(`NOT IMPLEMENTED: post detail: ${req.params.postId}`)
 };
 
 exports.create_post_get = (req, res, next) => { 
