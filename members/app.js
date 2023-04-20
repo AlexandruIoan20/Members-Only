@@ -5,6 +5,9 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require("mongoose");
+const passport = require("passport"); 
+const session = require("express-session");
+const LocalStrategy = require("passport-local").Strategy; 
 
 // Routers 
 const generalRouter = require("./routes/general");
@@ -34,6 +37,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use("/general", generalRouter);
+
+app.use(session(
+  {
+    secret: process.env.SECRET_KEY,  
+    resave: false, 
+    saveUninitialized: true,
+  }
+));
+app.use(passport.initialize());
+app.use(passport.session()); 
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

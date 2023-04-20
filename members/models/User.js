@@ -9,10 +9,12 @@ const UserSchema = new Schema({
     birthDay: { type: Date, required: true }, 
 });
 
-UserSchema.virtul("birthDay_formatted").get(function () { 
+UserSchema.virtual("birthDay_formatted").get(function () { 
     return DateTime.fromJSDate(this.birthDay).toLocaleString(DateTime.DATE_MED);
 });
 
 UserSchema.virtual("url").get(function () { 
     return; 
 })
+
+module.exports = mongoose.model("User", UserSchema);

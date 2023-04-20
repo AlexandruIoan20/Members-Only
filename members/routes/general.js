@@ -5,8 +5,16 @@ const genre_controller = require("../controllers/genre_controller");
 const home_controller = require("../controllers/home_controller");
 const post_controller = require("../controllers/post _controller");
 const profile_controller = require("../controllers/profile_controller");
+const auth_controller = require("../controllers/auth_controller");
 
-router.get("", home_controller.index); 
+router.get("/", home_controller.index); 
+
+// Auth Routes
+router.get("/login", auth_controller.login_get);
+router.post("/login", auth_controller.login_post);
+
+router.get("/register", auth_controller.register_get);
+router.post("/register", auth_controller.register_post);
 
 // Genre Routes 
 router.get("/genres/create", genre_controller.create_genre_get); 
