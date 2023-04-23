@@ -4,7 +4,7 @@ const { DateTime } = require("luxon");
 
 const UserSchema = new Schema({ 
     username: { type: String, minLength: 1, required: true }, 
-    email: { type: String, minLength: 3, required: true}, 
+    email: { type: String, minLength: 1, required: true}, 
     password: { type: String, minLength: 1, required: true}, 
     birthDay: { type: Date, required: true }, 
 });

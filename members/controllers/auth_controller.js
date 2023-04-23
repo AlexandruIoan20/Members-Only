@@ -2,68 +2,72 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcrypt");
 const { body, validationResult } = require("express-validator");
+const initializePassport = require("../config/passport_config");
+const  { getUserByEmail }  = require("../middleware/database");
+
+initializePassport(passport, getUserByEmail)
+
+const User = require("../models/User");
 
 exports.register_get = (req, res, next) => { 
     res.render("register");
 };
 
-exports.register_post =  [
-    body("username") 
+exports.register_post = [ 
+    body("username", "Name is required") 
         .trim()
         .isLength({ min: 1})
-        .custom(async value => { 
-            const user = await User.find({ username: value }); 
-            if(user)
-                throw new Error("This name is already used.")
-        })
-        .escape(),
-    body("email")
-        .trim()
-        .isEmail()
+        .escape(), 
+    body("password", "Password is required")
+        .trim() 
         .isLength({ min: 1 }) 
-        .custom(async value => { 
-            const user = await User.find( { email: value });
-            if(user)
-                throw new Error("This email is already in use");
-        })
-        .escape(), 
-    body("password")
+        .escape(),
+    body("email", "Email is required")
         .trim() 
-        .isStrongPassword()
-        .withMessage("Your password is not strong enough")
-        .escape(), 
-    body("birthday")
-        .trim() 
-        .isISO8601() 
-        .escape(), 
+        .isLength({ min: 1 })
+        .escape(),
+    body("birthDay", "Birth Day is required")
+        .trim()
+        .escape(),
+    
     async (req, res, next) => { 
-        const errors = validationResult(req); 
-        
-        const hashedPassword = bcrypt.hash(req.body.password, 10);
+        const errors = validationResult(req);
+
+        const hashedPassword = await bcrypt.hash(req.body.password, 12);
+        console.log(req.body.email);
         const user = new User({ 
             username: req.body.username, 
-            email: req.body.email,
-            password: hashedPassword, 
-            bithday: req.body.birthday
-        });
+            email: req.body.email, 
+            password: hashedPassword,
+            birthDay: req.body.birthDay
+        })
 
         if(!errors.isEmpty()) { 
+            console.log("ERROR AT: auth controller line 93")
             res.render("register", { 
-                username: user.username,
-                password: "",
+                username: user.username, 
                 email: user.email, 
-                birthday: user.bithday
-            });
+                password: '', 
+                birthDay: user.birthDay,
+                errors: errors.array()
+            })
         }
+
+        await user.save(); 
+        res.redirect("/general/login")
+        console.log("DONE");
     }
 ]
+
 
 exports.login_get = (req, res, next) => { 
     res.render("login");
 };
 
-exports.login_post = (req, res, next) => { 
-    res.send("login POST");
-}; 
+exports.login_post = passport.authenticate('local', {
+    successRedirect: "/general",
+    failureRedirect: "/general/login", 
+    failureFlash: true, 
+})
 
 

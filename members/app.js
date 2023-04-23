@@ -8,6 +8,8 @@ const mongoose = require("mongoose");
 const passport = require("passport"); 
 const session = require("express-session");
 const LocalStrategy = require("passport-local").Strategy; 
+const flash = require("express-flash");
+const bcrypt = require("bcrypt");
 
 // Routers 
 const generalRouter = require("./routes/general");
@@ -24,6 +26,8 @@ async function main() {
   await mongoose.connect(mongodb);
 }
 
+const User = require("./models/User");
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -34,10 +38,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use("/general", generalRouter);
-
 app.use(session(
   {
     secret: process.env.SECRET_KEY,  
@@ -47,6 +47,11 @@ app.use(session(
 ));
 app.use(passport.initialize());
 app.use(passport.session()); 
+app.use(flash()); 
+
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+app.use("/general", generalRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

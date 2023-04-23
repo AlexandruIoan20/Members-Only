@@ -15,22 +15,26 @@ html(lang="en")
     form(action="/general/register", method = "POST") 
         .form-group
             label(for="username") Username: 
-            input#username(type="text" name = "username" required) 
+            input#username(type="text" name = "username", value = username || "", required) 
 
         .form-group 
             label(for="email") Email: 
-            input#email(type = "email", name = "email", required)
+            input#email(type = "email", name = "email", value = email || "", required)
 
         .form-group 
             label(for="password") Password: 
-            input#password(type = "password", name = "password", required)
+            input#password(type = "password", name = "password", value = password || "", required)
 
         .form-group 
-            label(for="birthday") Birthday: 
-            input#birthday(type = "date", name = "birthday", required)
+            label(for="birthDay") Birthday: 
+            input#birthDay(type = "date", name = "birthDay", value = birthDay || "" required)
 
         button(type = "submit") Register  
 
     hr
     p 
         a(href="/general/login") Login
+
+    if errors 
+        for error in errors 
+            p= error.msg
