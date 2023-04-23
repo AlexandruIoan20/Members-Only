@@ -1,0 +1,38 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        title Document
+    body 
+    block content 
+    header 
+        h1 Update informations for #{username} 
+    
+    main 
+    form(action="", method = "POST") 
+        .form-group
+            label(for="username") Username: 
+            input#username(type="text" name = "username", value = username || "", required) 
+
+        .form-group 
+            label(for="email") Email: 
+            input#email(type = "email", name = "email", value = email || "", required)
+
+        .form-group 
+            label(for="password") Password: 
+            input#password(type = "password", name = "password", value = password || "", required)
+
+        .form-group 
+            label(for="birthDay") Birthday: 
+            input#birthDay(type = "date", name = "birthDay", value = birthDay || "" required)
+
+        button(type = "submit") Update  
+
+    hr  
+
+    if errors 
+        for error in errors 
+            p= error.msg

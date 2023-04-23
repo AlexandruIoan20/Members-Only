@@ -1,4 +1,6 @@
 const async = require("async");
+const { body, validationResult } = require("express-validator");
+const bcrypt = require("bcrypt");
 
 const User = require("../models/User");
 const Post = require("../models/Post");
@@ -49,9 +51,53 @@ exports.delete_profile_post = async (req, res, next) => {
 };
 
 exports.update_profile_get = (req, res, next) => { 
-
+    res.render("user_update", { 
+        username: req.user.username,
+        email: req.user.email, 
+        password: "", 
+        birthDay: req.user.birthDay, 
+    }) 
 };
 
-exports.update_profile_post = (req, res, next) => { 
-    res.send("NOT IMPLEMENTED: update profile POST");
-};
+exports.update_profile_post = [
+    body("username", "Username is required")
+        .trim() 
+        .isLength({ min: 1 }) 
+        .escape(), 
+    body("email", "Email is required")
+        .trim()
+        .isLength({ min: 1 }) 
+        .isEmail() 
+        .escape(), 
+    body("password", "Password is required")
+        .trim() 
+        .isLength({min: 1}) 
+        .escape(), 
+
+    async (req, res, next) => { 
+        const errors = validationResult(req);
+
+        const hashedPassword = bcrypt.hash(req.body.password, 12);
+        const user = new User({ 
+            username: req.body.username, 
+            email: req.body.email, 
+            password: hashedPassword, 
+            birthDay: req.body.birthDay,
+            _id: req.user._id, 
+        }); 
+
+        if(!errors.isEmpty()) { 
+            res.render("user_detail", { 
+                username: req.user.username,
+                email: req.user.email, 
+                password: "", 
+                birthDay: req.user.birthDay, 
+                errors: errors.array (), 
+            })
+        }; 
+
+        await User.updateOne({ _id: req.params.id }, user);
+        console.log(`User ${req.params.id} updated successfully.`);
+        res.redirect(user.url); 
+    }
+]
