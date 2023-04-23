@@ -32,6 +32,7 @@ exports.index = (req, res, next) => {
                 usersCount: results.usersCount, 
                 membersCount: results.membersCount,
                 adminsCount: results.adminsCount, 
+                user: req.user,
             })
         }
     )

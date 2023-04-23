@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 const { body, validationResult } = require("express-validator");
 const initializePassport = require("../config/passport_config");
 const  { getUserByEmail }  = require("../middleware/database");
+const clear_collection = require ("../middleware/clear_database");
 
 initializePassport(passport, getUserByEmail)
 

@@ -14,7 +14,7 @@ UserSchema.virtual("birthDay_formatted").get(function () {
 });
 
 UserSchema.virtual("url").get(function () { 
-    return; 
+    return `/general/profiles/${this._id}`;
 })
 
 module.exports = mongoose.model("User", UserSchema);
