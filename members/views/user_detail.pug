@@ -11,6 +11,12 @@ html(lang="en")
         header 
             h1 #{user.username}
 
+            if personalAccount 
+                p.personal 
+                    a(href=`${user.url}/delete`) Delete Account 
+                p.personal 
+                    a(href=`${user.url}/update`) Update Account 
+
         main 
             p Details: 
             ul 
