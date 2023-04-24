@@ -1,0 +1,40 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        title Document
+    body 
+    block content 
+        header 
+            h1 #{pageTitle}
+
+        main 
+            form(action="" method = "POST")
+                .form-group 
+                    label(for="title") Title: 
+                    input#title(type="text" name = "title" value = title || "", required)
+
+                .form-group 
+                    label(for="genre") Genre:  
+                    select#genre(name="genre" value = "genre" || undefined, required)
+                        for genre in genres 
+                            option(value=genre._id) #{genre.title}  
+
+                .form-group 
+                    if description 
+                        hr
+                        p.info Last Description 
+                        p #{description}
+                        hr 
+
+                    label(for="description") Description 
+                    textarea#description(name="description", cols="30", rows="10")  
+
+                article.button-holder   
+                    if pageTitle == "Create Post"
+                        button#submit-button(type = "submit") Post 
+                    else 
+                        button#submit-button(type = "submit") Edit Post

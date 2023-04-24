@@ -5,6 +5,7 @@ const async = require("async");
 const User = require("../models/User");
 const Member = require("../models/Member"); 
 const Admin = require("../models/Admin");
+const Post = require("../models/Post");
 
 exports.index = (req, res, next) => { 
     async.parallel( 
@@ -23,6 +24,11 @@ exports.index = (req, res, next) => {
                 const a = await Admin.countDocuments().exec(); 
                 return a; 
             },
+
+            async posts () { 
+                const p = await Post.find().populate({path: "genre", strictPopulate: false } ).populate({ path: "user", strictPopulate: false }).exec (); 
+                return p; 
+            }
         },
 
         (err, results) => { 
@@ -33,6 +39,7 @@ exports.index = (req, res, next) => {
                 membersCount: results.membersCount,
                 adminsCount: results.adminsCount, 
                 user: req.user,
+                posts: results.posts
             })
         }
     )

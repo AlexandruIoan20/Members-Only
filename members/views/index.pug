@@ -17,6 +17,20 @@ html(lang="en")
     p 
       a(href="/general/genres") View all genres 
 
+    if posts.length   
+      ul.posts 
+        for post in posts 
+          li.post    
+            p.post-title #{post.title}
+            p.post-info User: #{post.user.username} - #{post.postDate_formatted} 
+            p.post-genre Genre: #{post.genre.title}
+            p.post-description 
+              a(href=`${post.url}`) Post 
+
+    else 
+      p 0 posts available 
+      p 
+        a(href=`${user.url}/create`) Create Post +  
   hr
   ul.user-statistic 
     li Users: #{usersCount} 

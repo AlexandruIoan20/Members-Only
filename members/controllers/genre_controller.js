@@ -119,12 +119,12 @@ exports.update_genre_post = [
             res.render("genre_form", { 
                 title: genre.title, 
                 description: genre.description, 
+                errors: errors.array(),
             })
         };
 
 
         await Genre.findByIdAndUpdate(genre._id, genre);
         res.redirect(genre.url);
-        
     }
 ]
