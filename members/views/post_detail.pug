@@ -15,3 +15,11 @@ html(lang="en")
 
         main 
             p #{post.description}
+
+            if post.user.username == reqUser.username 
+                hr
+                section.developer 
+                    p
+                        a(href=`${post.url}/delete`) Delete 
+                    p 
+                        a(href=`${post.url}/update`) Edit  
