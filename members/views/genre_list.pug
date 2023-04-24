@@ -1,0 +1,27 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        title Document
+    body 
+    block content 
+        header  
+            h1 Available genres 
+            if genres.length 
+                p #{genres.length} genres. 
+            else 
+                p 0 genres. 
+        main 
+            ul.genres 
+                for genre in genres 
+                    li 
+                        p
+                            a(href=genre.url) #{genre.title} 
+        
+
+            section.developer  
+                p   
+                    a(href="/general/genres/create") Create Genre 

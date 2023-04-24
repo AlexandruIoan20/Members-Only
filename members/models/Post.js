@@ -5,6 +5,7 @@ const { DateTime } = require("luxon");
 const PostSchema = new Schema({ 
     title: {type: String, minLength: 1, required: true},
     description: {type: String, minLength: 1, required: true}, 
+    genre: { type: Schema.Types.ObjectId, ref: "Genre", required: true}, 
     user: { type: Schema.Types.ObjectId, ref: "User", required: true},
     postDate: {type: Date, default: Date.now},
 });
