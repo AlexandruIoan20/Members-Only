@@ -41,10 +41,20 @@ exports.delete_profile_get = (req, res, next) => {
 
 exports.delete_profile_post = async (req, res, next) => { 
     try { 
-        await User.deleteOne({ _id: req.params.id });
-        console.log(`User ${req.params.id} deleted`);
+        async.parallel( 
+            { 
+                async user() { 
+                    await User.deleteOne({ _id: req.params.id }); 
+                }, 
+                async posts() { 
+                    await Post.deleteMany( { user: req.params.id });
+                }
+            }, (err, results) => { 
+                console.log(`User deleted`);
 
-        res.redirect("/general/register");
+                res.redirect("/general/register");
+            }
+        )
     } catch (err) { 
         if(err) return next(err);
     }
