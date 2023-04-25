@@ -3,9 +3,7 @@ const async = require("async");
 
 // Database 
 const User = require("../models/User");
-const Member = require("../models/Member"); 
-const Admin = require("../models/Admin");
-const Post = require("../models/Post");
+const Post = require("../models/Post"); 
 
 exports.index = (req, res, next) => { 
     async.parallel( 
@@ -16,12 +14,12 @@ exports.index = (req, res, next) => {
             },
 
             async membersCount () { 
-                const m = await Member.countDocuments().exec(); 
+                const m = await User.countDocuments({ grade: "Member"}).exec(); 
                return m;
             },
 
             async adminsCount () { 
-                const a = await Admin.countDocuments().exec(); 
+                const a = await User.countDocuments({ grade: "Admin"}).exec(); 
                 return a; 
             },
 
