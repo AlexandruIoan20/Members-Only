@@ -28,6 +28,7 @@ exports.create_post_get = async (req, res, next) => {
     res.render("post_form", { 
         pageTitle: "Create Post", 
         genres: genres, 
+        user: req.user, 
     })
 };
 
@@ -63,6 +64,7 @@ exports.create_post_post = [
                 description: post.description, 
                 genre: post.genre, 
                 genres: genres, 
+                user: req.user, 
                 errors: errors.array(),
             })
         }
@@ -102,6 +104,7 @@ exports.delete_post_get = async (req, res, next) => {
 
             res.render("post_delete", { 
                 post: results.post, 
+                user: req.user, 
             })
         }
     )
@@ -137,6 +140,7 @@ exports.update_post_get = async (req, res, next) => {
                 title: results.post.title, 
                 description: results.post.description,  
                 genres: results.genres, 
+                user: req.user, 
             })
 
         }
@@ -178,6 +182,7 @@ exports.update_post_post = [
                 genre: post.genre, 
                 genres: genres, 
                 errors: errors.array(),
+                user: req.user, 
             })
         }
 

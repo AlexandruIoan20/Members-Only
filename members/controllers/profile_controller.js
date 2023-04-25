@@ -47,7 +47,7 @@ exports.delete_profile_post = async (req, res, next) => {
                     await User.deleteOne({ _id: req.params.id }); 
                 }, 
                 async posts() { 
-                    await Post.deleteMany( { user: req.params.id });
+                    await Post.deleteMany( { user: req.params.id });    
                 }
             }, (err, results) => { 
                 console.log(`User deleted`);
@@ -66,6 +66,7 @@ exports.update_profile_get = (req, res, next) => {
         email: req.user.email, 
         password: "", 
         birthDay: req.user.birthDay, 
+        user: req.user, 
     }) 
 };
 
@@ -102,6 +103,7 @@ exports.update_profile_post = [
                 email: req.user.email, 
                 password: "", 
                 birthDay: req.user.birthDay, 
+                user: req.user, 
                 errors: errors.array (), 
             })
         }; 

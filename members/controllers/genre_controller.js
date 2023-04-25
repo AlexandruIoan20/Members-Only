@@ -9,6 +9,7 @@ exports.genre_list = async (req, res, next) => {
 
     res.render("genre_list", { 
         genres: genres, 
+        user: req.user, 
     })
 };
 
@@ -23,6 +24,7 @@ exports.genre_detail = async (req, res, next) => {
         }
 
         res.render("genre_detail", { 
+            user: req.user, 
             genre: genre 
         })
     } catch (err) { 
@@ -33,6 +35,7 @@ exports.genre_detail = async (req, res, next) => {
 exports.create_genre_get = (req, res, next) => { 
     res.render("genre_form", { 
         pageTitle: "Create genre",
+        user: req.user, 
     });
 };
 
@@ -58,6 +61,7 @@ exports.create_genre_post = [
             res.render("genre_form", { 
                 title: genre.title, 
                 description: genre.description, 
+                user: req.user, 
             })
         };
 
@@ -76,6 +80,7 @@ exports.delete_genre_get = async (req, res, next) => {
     const genre = await Genre.findById(req.params.id);
     res.render("genre_delete", { 
         genre: genre, 
+        user: req.user, 
     });
 }; 
 
@@ -92,6 +97,7 @@ exports.update_genre_get = async (req, res, next) => {
     res.render("genre_form", { 
         pageTitle: `Update genre ${genre.title}`, 
         title: genre.title, 
+        user: req.user, 
         description: genre.description, 
     })
 };  
@@ -119,6 +125,7 @@ exports.update_genre_post = [
             res.render("genre_form", { 
                 title: genre.title, 
                 description: genre.description, 
+                user: req.user, 
                 errors: errors.array(),
             })
         };

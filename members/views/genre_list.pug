@@ -23,5 +23,6 @@ html(lang="en")
         
 
             section.developer  
-                p   
-                    a(href="/general/genres/create") Create Genre 
+                if user.grade == "Admin" || user.grade == "Owner"
+                    p   
+                        a(href="/general/genres/create") Create Genre 

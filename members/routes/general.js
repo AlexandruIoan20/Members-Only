@@ -10,8 +10,10 @@ const checkAuthenticated = require("../middleware/checkAuth");
 const checkNotAuthenticated = require("../middleware/checkNotAuth");
 const admin_controller = require("../controllers/admin_controller");
 
+const { isMember, isAdmin, isOwner } = require("../middleware/grade_security");
+
 router.get("/", checkAuthenticated, home_controller.index); 
-router.get("/users", checkAuthenticated, home_controller.users_list);
+router.get("/users", checkAuthenticated, isAdmin, home_controller.users_list);
 
 // Auth Routes
 router.get("/login", checkNotAuthenticated, auth_controller.login_get);
@@ -21,14 +23,14 @@ router.post("/login", checkNotAuthenticated,  auth_controller.login_post);
 router.post("/logout", auth_controller.logout);
 
 // Genre Routes 
-router.get("/genres/create", checkAuthenticated,  genre_controller.create_genre_get); 
-router.post("/genres/create", checkAuthenticated, genre_controller.create_genre_post);
+router.get("/genres/create", checkAuthenticated, isAdmin, genre_controller.create_genre_get); 
+router.post("/genres/create", checkAuthenticated, isAdmin, genre_controller.create_genre_post);
 
-router.get("/genres/:id/delete", checkAuthenticated,  genre_controller.delete_genre_get);
-router.post("/genres/:id/delete", checkAuthenticated, genre_controller.delete_genre_post);
+router.get("/genres/:id/delete", checkAuthenticated, isAdmin, genre_controller.delete_genre_get);
+router.post("/genres/:id/delete", checkAuthenticated, isAdmin, genre_controller.delete_genre_post);
 
-router.get("/genres/:id/update", checkAuthenticated,  genre_controller.update_genre_get);
-router.post("/genres/:id/update", checkAuthenticated,  genre_controller.update_genre_post);
+router.get("/genres/:id/update", checkAuthenticated, isAdmin, genre_controller.update_genre_get);
+router.post("/genres/:id/update", checkAuthenticated, isAdmin, genre_controller.update_genre_post);
 
 router.get("/genres", checkAuthenticated, genre_controller.genre_list);
 router.get("/genres/:id", checkAuthenticated, genre_controller.genre_detail);
@@ -40,8 +42,8 @@ router.post("/profiles/:id/delete", checkAuthenticated,  profile_controller.dele
 router.get("/profiles/:id/update", profile_controller.update_profile_get);
 router.post("/profiles/:id/update", profile_controller.update_profile_post);
 
-router.get("/profiles/:id/promote", admin_controller.promote_get); 
-router.post("/profiles/:id/promote", admin_controller.promote_post);
+router.get("/profiles/:id/promote", isOwner, admin_controller.promote_get); 
+router.post("/profiles/:id/promote", isOwner, admin_controller.promote_post);
 
 router.get("/profiles/:id", profile_controller.profile_detail);
 

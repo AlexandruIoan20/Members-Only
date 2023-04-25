@@ -14,6 +14,7 @@ html(lang="en")
         main 
             p #{genre.description}
 
+        if user.grade == "Admin" || user.grade == "Owner"
             section.developer 
                 p 
                     a(href= `${genre.url}/delete`) Delete Genre 

@@ -17,8 +17,9 @@ html(lang="en")
     p 
       a(href="/general/genres") View all genres 
 
-    p 
-      a(href="/general/users") View all users  
+    if user.grade == "Admin" || user.grade == "Owner"
+      p 
+        a(href="/general/users") View all users  
 
     if posts.length   
       ul.posts 

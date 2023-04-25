@@ -15,7 +15,8 @@ html(lang="en")
             ul 
                 for user in users 
                     li
-                        p #{user.username} 
+                        p 
+                            a(href=user.url) #{user.username} 
                         if user !== reqUser
                             p 
                                 a(href= `${user.url}/promote`) Promote
