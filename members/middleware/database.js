@@ -1,8 +1,6 @@
-const User = require("../models/User");
-
-async function getUserByEmail (email) { 
+async function getProfileByEmail (collection, email) { 
     try {
-        const foundUser = await User.findOne({ email: email }).exec()
+        const foundUser = await collection.findOne({ email: email }).exec()
         return foundUser;
     } catch (err) { 
         console.error(err); 
@@ -11,5 +9,5 @@ async function getUserByEmail (email) {
 }
 
 module.exports = { 
-    getUserByEmail: getUserByEmail,
+    getProfileByEmail: getProfileByEmail,
 }

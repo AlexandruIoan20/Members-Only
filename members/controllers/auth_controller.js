@@ -3,10 +3,10 @@ const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcrypt");
 const { body, validationResult } = require("express-validator");
 const initializePassport = require("../config/passport_config");
-const  { getUserByEmail }  = require("../middleware/database");
+const  { getProfileByEmail }  = require("../middleware/database");
 const clear_collection = require ("../middleware/clear_database");
 
-initializePassport(passport, getUserByEmail)
+initializePassport(passport, getProfileByEmail)
 
 const User = require("../models/User");
 
