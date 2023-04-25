@@ -8,6 +8,7 @@ const UserSchema = new Schema({
     username: { type: String, minLength: 1, required: true }, 
     email: { type: String, minLength: 1, required: true}, 
     password: { type: String, minLength: 1, required: true}, 
+    grade: { type: "String", default: "User"}, 
     birthDay: { type: Date, required: true }, 
 });
 

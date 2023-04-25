@@ -61,23 +61,27 @@ function initialize(passport, getProfileByEmail) {
     });
     passport.deserializeUser(async (id, done) => {
         try {
-            const user =  await User.findById(id).exec(); 
+            let user =  await User.findById(id).exec(); 
             if(user !== null)
               done(null, user);
             
             const member = await Member.findById(id).exec(); 
-            if(member !== null) { 
-              done(null, member); 
+            if(member !== null) {
+              user = member;  
+              done(null, user); 
             }; 
 
             const admin = await Admin.findById(id).exec(); 
-            if(admin !== null) { 
-              done(null, admin); 
+            if(admin !== null) {
+              user = admin;  
+              done(null, user); 
             }; 
 
             const owner = await Owner.findById(id).exec(); 
-            if(owner !== null)
-              done(null, owner);
+            if(owner !== null) { 
+              user = owner; 
+              done(null, user);
+            }
 
         } catch (err) {
             done(err);

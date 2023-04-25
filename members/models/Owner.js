@@ -6,6 +6,7 @@ const OwnerSchema = new Schema({
     username: { type: String, minLength: 1, required: true }, 
     password: { type: String, minLength: 1, required: true }, 
     email: { type: String, minLength: 1, required: true }, 
+    grade: { type: String, default: "Owner"}, 
     birthDay: { type: String, minLength: 1, required: true }, 
 }); 
 

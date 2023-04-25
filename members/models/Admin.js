@@ -6,6 +6,7 @@ const AdminSchema = new Schema({
     username: { type: String, minLength: 1, required: true }, 
     password: { type: String, minLength: 1, required: true }, 
     email: { type: String, minLength: 1, required: true }, 
+    grade: { type: String, default: "Admin"}, 
     birthDay: { type: String, minLength: 1, required: true }, 
 }); 
 
