@@ -10,6 +10,7 @@ const checkAuthenticated = require("../middleware/checkAuth");
 const checkNotAuthenticated = require("../middleware/checkNotAuth");
 
 router.get("/", checkAuthenticated, home_controller.index); 
+router.get("/users", checkAuthenticated, home_controller.users_list);
 
 // Auth Routes
 router.get("/login", checkNotAuthenticated, auth_controller.login_get);

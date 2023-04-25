@@ -32,7 +32,6 @@ function initialize(passport, getProfileByEmail) {
           return o; 
         }
       }, async (err, results) => { 
-          if(err) return next(err); 
           if (results.user == null && results.member == null && results.admin == null && results.owner == null) {
             return done(null, false, { message: 'No user with that email' })
           }

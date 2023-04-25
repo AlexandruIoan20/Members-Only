@@ -45,3 +45,12 @@ exports.index = (req, res, next) => {
     )
 };
 
+exports.users_list = async (req, res, next) => { 
+    const users = await User.find().exec(); 
+
+    res.render("members_list", { 
+        users,
+        reqUser: req.user, 
+    })
+}
+
