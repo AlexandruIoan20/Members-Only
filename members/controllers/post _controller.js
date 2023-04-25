@@ -143,6 +143,45 @@ exports.update_post_get = async (req, res, next) => {
     )
 };
 
-exports.update_post_post = (req, res, next) => { 
-    res.send("NOT IMPLEMENTED  update POST POST ")
-}
+exports.update_post_post = [
+    body("title", "Title is required")
+    .trim() 
+        .isLength({ min: 1})
+        .escape(), 
+    body("genre", "Genre is required")
+        .trim() 
+        .escape(), 
+    body("description", "description is required")
+        .trim() 
+        .isLength({ min: 1 })
+        .escape(), 
+    
+    async (req, res, next) => { 
+        const errors = validationResult(req);
+        const lastPost = await Post.findById(req.params.postId).exec(); 
+
+        const post = new Post({ 
+            title: req.body.title, 
+            description: req.body.description, 
+            genre: req.body.genre, 
+            user: req.user, 
+            postDate: lastPost.postDate, 
+            _id: req.params.postId, 
+        }); 
+
+        if(!errors.isEmpty()) { 
+            const genres = await Genre.find({}).exec(); 
+            res.render("post_form",{ 
+                pageTitle: "Create Post", 
+                title: post.title, 
+                description: post.description, 
+                genre: post.genre, 
+                genres: genres, 
+                errors: errors.array(),
+            })
+        }
+
+        await Post.findByIdAndUpdate(post._id, post); 
+        res.redirect(post.url);
+    }
+]

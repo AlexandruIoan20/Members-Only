@@ -7,7 +7,7 @@ const Member = require("../models/Member");
 const Admin = require("../models/Admin"); 
 const Owner = require("../models/Owner"); 
 
-
+// TODO: async.parallel - deserialize User
 
 function initialize(passport, getProfileByEmail) {
   const authenticateUser = async (email, password, done) => {
