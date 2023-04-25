@@ -26,7 +26,7 @@ html(lang="en")
         for post in posts 
           li.post    
             p.post-title #{post.title}
-            p.post-info User: #{post.user.username} - #{post.postDate_formatted} 
+            p.post-info #{post.user.grade}: #{post.user.username} - #{post.postDate_formatted} 
             p.post-genre Genre: #{post.genre.title}
             p.post-description 
               a(href=`${post.url}`) Post 
