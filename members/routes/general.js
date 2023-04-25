@@ -8,6 +8,7 @@ const profile_controller = require("../controllers/profile_controller");
 const auth_controller = require("../controllers/auth_controller");
 const checkAuthenticated = require("../middleware/checkAuth");
 const checkNotAuthenticated = require("../middleware/checkNotAuth");
+const admin_controller = require("../controllers/admin_controller");
 
 router.get("/", checkAuthenticated, home_controller.index); 
 router.get("/users", checkAuthenticated, home_controller.users_list);
@@ -38,6 +39,9 @@ router.post("/profiles/:id/delete", checkAuthenticated,  profile_controller.dele
 
 router.get("/profiles/:id/update", profile_controller.update_profile_get);
 router.post("/profiles/:id/update", profile_controller.update_profile_post);
+
+router.get("/profiles/:id/promote", admin_controller.promote_get); 
+router.post("/profiles/:id/promote", admin_controller.promote_post);
 
 router.get("/profiles/:id", profile_controller.profile_detail);
 
