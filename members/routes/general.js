@@ -17,6 +17,7 @@ router.get("/login", checkNotAuthenticated, auth_controller.login_get);
 router.get("/register", checkNotAuthenticated,  auth_controller.register_get);
 router.post("/register", checkNotAuthenticated,  auth_controller.register_post);
 router.post("/login", checkNotAuthenticated,  auth_controller.login_post);
+router.post("/logout", auth_controller.logout);
 
 // Genre Routes 
 router.get("/genres/create", checkAuthenticated,  genre_controller.create_genre_get); 

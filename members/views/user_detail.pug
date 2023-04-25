@@ -16,6 +16,9 @@ html(lang="en")
                     a(href=`${user.url}/delete`) Delete Account 
                 p.personal 
                     a(href=`${user.url}/update`) Update Account 
+                form(action="/general/logout", method = "POST") 
+                    input(type="hidden" name = "user" value = user || undefined) 
+                    button#submit-button(type = "submit") Log Out
 
         main 
             p Details: 

@@ -24,7 +24,7 @@ exports.index = (req, res, next) => {
             },
 
             async posts () { 
-                const p = await Post.find().populate({path: "genre", strictPopulate: false } ).populate({ path: "user", strictPopulate: false }).exec (); 
+                const p = await Post.find().populate({path: "genre", strictPopulate: false } ).populate({ path: "user", strictPopulate: false }).exec(); 
                 return p; 
             }
         },
