@@ -64,7 +64,7 @@ p .post-in-profile:hover {
   margin: .2rem;
 }
 
-input { 
+input, textarea { 
   background-color: #403d39;
   padding-inline: .5rem;
   padding-top: .2rem; 
@@ -73,6 +73,11 @@ input {
   outline: none;
   border-radius: 20px;
   color: white; 
+}
+
+.button-holder { 
+  margin-top: .3rem; 
+  margin-bottom: .3rem;
 }
 
 .submit-button { 
@@ -161,4 +166,34 @@ ul {
 
 .p-button-index-post { 
   padding-top: 0; 
+}
+
+/* POST DETAIL PAGE*/
+.post-description { 
+  background-color: #fffcf2;
+  color: #252422; 
+  margin-inline: 4rem;
+  padding: .5rem;
+
+  margin-top: .5rem; 
+  margin-bottom: .5rem;
+  box-shadow: rgba(107, 107, 107, 0.35) 0px 5px 15px;
+} 
+
+.info { 
+  display: flex;
+  column-gap: 2rem;
+  background-color: #403d39;
+  padding: .5rem;
+}
+
+/* MEMBERS LIST PAGE */
+.members-list ul li { 
+  margin: 1rem; 
+  display: flex; 
+  column-gap: .4rem;
+}
+
+.members-list ul li::before { 
+  content: "-"; 
 }

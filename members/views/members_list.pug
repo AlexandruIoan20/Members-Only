@@ -11,12 +11,12 @@ html(lang="en")
         header  
             h1 View all members 
 
-        main 
+        main.members-list
             ul 
                 for user in users 
                     li
                         p 
-                            a(href=user.url) #{user.username} 
+                            a(href=user.url) #{user.username} (#{user.grade})
                         if user !== reqUser
                             p 
-                                a(href= `${user.url}/promote`) Promote
+                                a.button(href= `${user.url}/promote`) Promote

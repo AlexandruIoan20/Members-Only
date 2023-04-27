@@ -10,11 +10,13 @@ html(lang="en")
     block content 
         header  
             h1 #{post.title}
-            p.info - #{post.user.username}
-            p.info Genre: #{post.genre.title}
 
         main 
-            p #{post.description}
+            section.info 
+                p.post-info - #{post.user.username}
+                p.post-info Genre: #{post.genre.title}
+
+            p.post-description #{post.description}
 
             if post.user.username == reqUser.username || reqUser.grade == "Admin" || reqUser.grade == "Owner"
                 hr
