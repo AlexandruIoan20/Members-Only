@@ -11,7 +11,7 @@ html(lang="en")
     header.auth-header
         h1 Members Only 
     
-    main 
+    main.auth-main 
         h2 Login
             if messages.error 
                 p= messages.error
@@ -24,9 +24,9 @@ html(lang="en")
                 label(for="password") Password: 
                 input#password(type = "password", name = "password", required)
             
+            hr
             article.buttons-holder 
                 button.submit-button(type = "submit") Login  
 
-        hr
-        p 
-            a(href="/general/register") Register
+        p.p-auth-a
+            a.post-in-profile.auth-a(href="/general/register") Register

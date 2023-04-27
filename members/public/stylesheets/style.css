@@ -64,6 +64,17 @@ p .post-in-profile:hover {
   margin: .2rem;
 }
 
+input { 
+  background-color: #403d39;
+  padding-inline: .5rem;
+  padding-top: .2rem; 
+  padding-bottom: .2rem;
+  border: none; 
+  outline: none;
+  border-radius: 20px;
+  color: white; 
+}
+
 .submit-button { 
   background-color: #EB5E28;
   border-radius: 10px;
@@ -90,6 +101,31 @@ ul {
 /*  Auth pages */ 
 .personal { 
   margin-top: 1rem; 
+}
+
+.auth-main { 
+  height: 70vh; 
+  display: grid; 
+  place-content: center;
+}
+
+.auth-main form { 
+  border: 2px solid #fffcf2;
+  padding: 1rem;
+}
+
+.form-group { 
+  margin: 1rem; 
+  margin-left: 0; 
+}
+
+.auth-main .submit-button { 
+  margin-top: .5rem;
+}
+
+.p-auth-a { 
+  margin: 1rem;
+  margin-left: 0; 
 }
 
   /*  post in index*/ 

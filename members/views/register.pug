@@ -30,12 +30,11 @@ html(lang="en")
                 label(for="birthDay") Birthday: 
                 input#birthDay(type = "date", name = "birthDay", value = birthDay || "" required)
 
+            hr
             article.buttons-holder 
                 button.submit-button(type = "submit") Register  
-
-        hr
-        p 
-            a(href="/general/login") Login
+        p.p-auth-a
+            a.post-in-profile(href="/general/login") Login
 
         if errors 
             for error in errors 
