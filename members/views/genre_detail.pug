@@ -12,11 +12,11 @@ html(lang="en")
             h1 #{genre.title}
 
         main 
-            p #{genre.description}
+            p.post-description #{genre.description}
 
         if user.grade == "Admin" || user.grade == "Owner"
             section.developer 
                 p 
-                    a(href= `${genre.url}/delete`) Delete Genre 
+                    a.button(href= `${genre.url}/delete`) Delete Genre 
                 p 
-                    a(href= `${genre.url}/update`) Update Genre 
+                    a.button(href= `${genre.url}/update`) Update Genre 

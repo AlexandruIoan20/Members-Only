@@ -19,10 +19,10 @@ html(lang="en")
                 for genre in genres 
                     li 
                         p
-                            a(href=genre.url) #{genre.title} 
+                            a.list-a(href=genre.url) #{genre.title} 
         
 
             section.developer  
                 if user.grade == "Admin" || user.grade == "Owner"
                     p   
-                        a(href="/general/genres/create") Create Genre 
+                        a.button(href="/general/genres/create") Create Genre 

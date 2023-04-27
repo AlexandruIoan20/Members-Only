@@ -197,3 +197,31 @@ ul {
 .members-list ul li::before { 
   content: "-"; 
 }
+
+/* GENRES */ 
+
+.list-a::before { 
+  content: "-"; 
+}; 
+
+.list-a { 
+  font-weight: 700;
+}
+
+.list-a:hover, .list-a:focus { 
+  background-color: #403d39;
+  color: #fffcf2;
+  font-weight: 900;
+
+  padding-inline: 0.5rem; 
+  padding-top: .2rem; 
+  padding-bottom: .2rem;
+  border-radius: 20px;
+}
+
+.developer { 
+  display: flex;
+  column-gap: 3rem;
+  justify-content: center;
+  margin: 2rem;
+}
