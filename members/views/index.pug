@@ -10,16 +10,16 @@ html(lang="en")
   block content
   header 
     h1 Members Only 
-    p 
-      a(href=`${user.url}`) View Profile 
+    p.p-button
+      a.post-in-profile(href=`${user.url}`) View Profile 
     
   main 
-    p 
-      a(href="/general/genres") View all genres 
+    p.p-button 
+      a.button(href="/general/genres") View all genres 
 
     if user.grade == "Admin" || user.grade == "Owner"
-      p 
-        a(href="/general/users") View all users  
+      p.p-button
+        a.button(href="/general/users") View all users  
 
     if posts.length   
       ul.posts 
@@ -28,13 +28,13 @@ html(lang="en")
             p.post-title #{post.title}
             p.post-info #{post.user.grade}: #{post.user.username} - #{post.postDate_formatted} 
             p.post-genre Genre: #{post.genre.title}
-            p.post-description 
-              a(href=`${post.url}`) Post 
+            p.p-button 
+              a.button(href=`${post.url}`) Post 
 
     else 
       p 0 posts available 
-      p 
-        a(href=`${user.url}/create`) Create Post +  
+      p.p-button
+        a.button(href=`${user.url}/create`) Create Post +  
   hr
   ul.user-statistic 
     li Users: #{usersCount} 

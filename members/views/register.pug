@@ -8,33 +8,35 @@ html(lang="en")
         title Document
     body 
     block content 
-    header 
-        h1  Register 
+    header.auth-header 
+        h1 Members-Only 
     
-    main 
-    form(action="/general/register", method = "POST") 
-        .form-group
-            label(for="username") Username: 
-            input#username(type="text" name = "username", value = username || "", required) 
+    main.auth-main
+        h2 Register
+        form.auth-form(action="/general/register", method = "POST") 
+            .form-group
+                label(for="username") Username: 
+                input#username(type="text" name = "username", value = username || "", required) 
 
-        .form-group 
-            label(for="email") Email: 
-            input#email(type = "email", name = "email", value = email || "", required)
+            .form-group 
+                label(for="email") Email: 
+                input#email(type = "email", name = "email", value = email || "", required)
 
-        .form-group 
-            label(for="password") Password: 
-            input#password(type = "password", name = "password", value = password || "", required)
+            .form-group 
+                label(for="password") Password: 
+                input#password(type = "password", name = "password", value = password || "", required)
 
-        .form-group 
-            label(for="birthDay") Birthday: 
-            input#birthDay(type = "date", name = "birthDay", value = birthDay || "" required)
+            .form-group 
+                label(for="birthDay") Birthday: 
+                input#birthDay(type = "date", name = "birthDay", value = birthDay || "" required)
 
-        button(type = "submit") Register  
+            article.buttons-holder 
+                button.submit-button(type = "submit") Register  
 
-    hr
-    p 
-        a(href="/general/login") Login
+        hr
+        p 
+            a(href="/general/login") Login
 
-    if errors 
-        for error in errors 
-            p= error.msg
+        if errors 
+            for error in errors 
+                p= error.msg

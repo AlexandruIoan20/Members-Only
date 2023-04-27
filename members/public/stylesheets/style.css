@@ -1,8 +1,82 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+* { 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box;
 }
 
-a {
-  color: #00B7FF;
+/* General changes */
+
+body { 
+  background-color: #252422;
+  color: white;
+  height: 100vh;
+}
+
+header { 
+  background-color: #EB5E28;
+  padding: 1rem; 
+}
+
+a { 
+  color: #FFFCF2;
+  text-decoration: none;
+}
+
+.button { 
+  background-color: #EB5E28;
+  padding-inline: 0.5rem; 
+  padding-top: 0.2rem;  
+  padding-bottom: 0.2rem; 
+
+  box-shadow: #ff9f793d 0px 3px 8px;
+
+  border-radius: 20px;
+}
+
+.button:hover, .button:focus { 
+  background-color: #CCC5B9;
+  color: #252422;
+}
+
+.p-button{ 
+  padding: 0.5rem;
+}
+
+.post-in-profile { 
+  text-decoration: underline;
+}
+
+.post-in-profile:hover, .post-in-profile:focus { 
+  background-color: #EB5E28;
+  border-radius: 10px;
+  padding-inline: 0.5rem; 
+  padding-top: 0.2rem; 
+  padding-bottom: 0.2rem; 
+}
+
+p .post-in-profile:hover { 
+  margin: .2rem;
+}
+
+.submit-button { 
+  background-color: #EB5E28;
+  border-radius: 10px;
+  padding-inline: 0.5rem; 
+  padding-top: 0.2rem; 
+  padding-bottom: 0.2rem; 
+
+  border:none;  
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 4px 12px;
+  color: white;
+}
+
+.submit-button:hover, .submit-button:focus { 
+  background-color: #CCC5B9;
+  color: #252422; 
+  text-decoration: underline;
+}
+
+/*  Auth pages */ 
+.personal { 
+  margin-top: 1rem; 
 }

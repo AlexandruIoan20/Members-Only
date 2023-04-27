@@ -11,18 +11,18 @@ html(lang="en")
         header 
             h1 #{user.username} - #{user.grade}
 
+        main 
             if personalAccount 
                 p.personal 
-                    a(href=`${user.url}/delete`) Delete Account 
+                    a.button(href=`${user.url}/delete`) Delete Account 
                 p.personal 
-                    a(href=`${user.url}/update`) Update Account 
+                    a.button(href=`${user.url}/update`) Update Account 
                 p.personal 
-                    a(href=`${user.url}/create`) Create Post + 
+                    a.button(href=`${user.url}/create`) Create Post + 
                 form(action="/general/logout", method = "POST") 
                     input(type="hidden" name = "user" value = user || undefined) 
-                    button#submit-button(type = "submit") Log Out 
-
-        main 
+                    article.button-holder
+                        button.submit-button(type = "submit") Log Out 
             p Details: 
             ul 
                 li
@@ -38,7 +38,7 @@ html(lang="en")
                 ul.posts    
                     for post in posts 
                         li
-                            a(href=`${post.url}`) #{post.title}
+                            a.post-in-profile(href=`${post.url}`) #{post.title}
                         
             else 
                 p  No posts yet.

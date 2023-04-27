@@ -8,23 +8,25 @@ html(lang="en")
         title Document
     body 
     block content 
-    header 
-        h1 Login 
+    header.auth-header
+        h1 Members Only 
     
     main 
-        if messages.error 
-            p= messages.error
-    form(action="/general/login", method = "POST") 
-        .form-group 
-            label(for="email") Email: 
-            input#email(type = "email", name = "email", required)
+        h2 Login
+            if messages.error 
+                p= messages.error
+        form(action="/general/login", method = "POST") 
+            .form-group 
+                label(for="email") Email: 
+                input#email(type = "email", name = "email", required)
 
-        .form-group 
-            label(for="password") Password: 
-            input#password(type = "password", name = "password", required)
+            .form-group 
+                label(for="password") Password: 
+                input#password(type = "password", name = "password", required)
+            
+            article.buttons-holder 
+                button.submit-button(type = "submit") Login  
 
-        button(type = "submit") Login  
-
-    hr
-    p 
-        a(href="/general/register") Register
+        hr
+        p 
+            a(href="/general/register") Register
