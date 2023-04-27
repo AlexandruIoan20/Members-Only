@@ -14,22 +14,25 @@ html(lang="en")
       a.post-in-profile(href=`${user.url}`) View Profile 
     
   main 
-    p.p-button 
-      a.button(href="/general/genres") View all genres 
+    section.navigate
+      p.p-button 
+        a.button(href="/general/genres") View all genres 
 
-    if user.grade == "Admin" || user.grade == "Owner"
-      p.p-button
-        a.button(href="/general/users") View all users  
+      if user.grade == "Admin" || user.grade == "Owner"
+        p.p-button
+          a.button(href="/general/users") View all users  
 
     if posts.length   
       ul.posts 
         for post in posts 
           li.post    
-            p.post-title #{post.title}
-            p.post-info #{post.user.grade}: #{post.user.username} - #{post.postDate_formatted} 
-            p.post-genre Genre: #{post.genre.title}
-            p.p-button 
-              a.button(href=`${post.url}`) Post 
+            article.article-post-functionality
+              p.post-title  #{post.title} -
+                p.p-button.p-button-index-post 
+                  a.button(href=`${post.url}`) View Post 
+            article.article-post-informations 
+              p.post-info #{post.user.grade}: #{post.user.username} - #{post.postDate_formatted} 
+              p.post-info Genre: #{post.genre.title}
 
     else 
       p 0 posts available 
