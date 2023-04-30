@@ -28,6 +28,7 @@ exports.request_detail = async (req, res, next) => {
             res.render("request_detail", { 
                 request: results.request, 
                 numberOfPosts: results.numberOfPosts, 
+                reqUser: req.user,
             })
         }
     )
