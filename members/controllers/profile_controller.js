@@ -16,7 +16,7 @@ exports.profile_detail = async (req, res, next) => {
             async posts () { 
                 const p = await Post.find({ user: req.params.id }).exec (); 
                 return p;
-            }
+            }, 
         }, 
 
         (err, results) => { 
@@ -27,6 +27,7 @@ exports.profile_detail = async (req, res, next) => {
             res.render("user_detail", { 
                 user: results.user, 
                 posts: results.posts, 
+                numberOfPosts: results.posts.length, 
                 personalAccount,
             })
         }

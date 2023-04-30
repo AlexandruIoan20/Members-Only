@@ -24,13 +24,16 @@ html(lang="en")
                     article.button-holder
                         button.submit-button(type = "submit") Log Out 
             p Details: 
-            ul 
-                li
-                    p.info Email: 
-                    p.user-value #{user.email}
+            ul.user-details-ul 
                 li 
-                    p.info Birthday: 
-                    p.user-value #{user.birthDay_formatted}
+                    if numberOfPosts
+                        p.info Posts: #{numberOfPosts}
+                    else 
+                        p.info No posts yet. 
+                li
+                    p.info Email: #{user.email}
+                li 
+                    p.info Birthday: #{user.birthDay_formatted}
 
         hr
         p.info Posts 

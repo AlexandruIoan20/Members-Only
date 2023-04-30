@@ -18,6 +18,12 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 require("dotenv").config();
 
+
+// TO DO: 
+// Cerere de avansare in grad 
+// Pagina cu reguli pentru avansare in grad 
+// Ideea principala - daca esti user nu poti vedea cine posteaza povestile 
+  
 const app = express();
 
 // Database 

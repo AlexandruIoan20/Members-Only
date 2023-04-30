@@ -225,3 +225,8 @@ ul {
   justify-content: center;
   margin: 2rem;
 }
+
+.info { 
+  margin-bottom: .5rem;
+  margin-top: .5rem; 
+}
