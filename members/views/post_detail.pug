@@ -11,13 +11,12 @@ html(lang="en")
         header  
             article.main-header
                 h1 #{post.title}
-            ul 
-                li 
-                    a(href="/general") ⌂
-                li 
-                    a(href=user.url) A 
-                li 
-                    a(href="/general/info") i
+            nav    
+                ul 
+                    li 
+                        a(href="/general") ⌂
+                    li 
+                        a(href="/general/info") i
 
         main 
             section.info 
@@ -33,6 +32,3 @@ html(lang="en")
                         a.button(href=`${post.url}/delete`) Delete 
                     p 
                         a.button(href=`${post.url}/update`) Edit  
-
-            p 
-                a(href=`/general`) Home 

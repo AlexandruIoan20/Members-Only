@@ -11,13 +11,12 @@ html(lang="en")
     header 
         article.main-header
             h1 Are you sure that you want to delete your account? 
-        ul 
-            li 
-                a(href="/general") ⌂
-            li 
-                a(href=user.url) A 
-            li 
-                a(href="/general/info") i
+        nav
+            ul 
+                li 
+                    a(href="/general") ⌂
+                li 
+                    a(href="/general/info") i
 
         form(action="" method = "POST")
             input(type="hidden" name = "user" value = user)

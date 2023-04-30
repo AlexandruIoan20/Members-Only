@@ -11,13 +11,12 @@ html(lang="en")
         header  
             article.main-header
                 h1 Promote user #{user.username} 
-            ul 
-                li 
-                    a(href="/general") ⌂
-                li 
-                    a(href=user.url) A 
-                li 
-                a(href="/general/info") i
+            nav
+                ul 
+                    li 
+                        a(href="/general") ⌂
+                    li 
+                    a(href="/general/info") i
 
         main 
             p.info Actual grade: #{user.grade} 

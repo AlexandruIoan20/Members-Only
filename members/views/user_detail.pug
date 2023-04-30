@@ -11,13 +11,12 @@ html(lang="en")
         header 
             article.main-header
                 h1 #{user.username} - #{user.grade}
-            ul 
-                li 
-                    a(href="/general") ⌂
-                li 
-                    a(href=user.url) A 
-                li 
-                    a(href="/general/info") i
+            nav
+                ul 
+                    li 
+                        a(href="/general") ⌂
+                    li 
+                        a(href="/general/info") i
 
         main 
             if personalAccount 
