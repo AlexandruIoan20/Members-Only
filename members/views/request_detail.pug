@@ -1,0 +1,34 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        title Document
+    body 
+        block content 
+            header
+                article.main-header
+                    h1 #{pageTitle}
+                nav  
+                    ul 
+                        li 
+                            a(href="/general") ⌂
+                        li 
+                            a(href="/general/info") i
+
+            main 
+                section.info 
+                    p.post-info  #{request.user.username}
+                    p.post-info  #{numberOfPosts} posts
+                p.post-description #{request.description}
+
+
+                if post.user.username == reqUser.username || reqUser.grade == "Admin" || reqUser.grade == "Owner"
+                    hr
+                    section.developer 
+                        p
+                            a.button(href=`${post.url}/delete`) Delete 
+                        p 
+                            a.button(href=`${post.url}/update`) Edit  

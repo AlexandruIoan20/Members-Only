@@ -26,6 +26,8 @@ html(lang="en")
                     a.button(href=`${user.url}/update`) Update Account 
                 p.personal 
                     a.button(href=`${user.url}/create`) Create Post + 
+                p.personal
+                    a.button(href = "/general/requests/create") Create Request
                 form(action="/general/logout", method = "POST") 
                     input(type="hidden" name = "user" value = user || undefined) 
                     article.button-holder

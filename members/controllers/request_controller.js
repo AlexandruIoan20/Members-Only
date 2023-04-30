@@ -1,9 +1,36 @@
-exports.request_list = (req, res, next) => { 
-    res.send("NOT IMPLEMENTED: request list"); 
+const Request = require("../models/Request"); 
+const Post = require("../models/Post");
+const async = require("async"); 
+
+exports.request_list = async (req, res, next) => { 
+    const requests = await Request.find({ }).populate("user").exec(); 
+    res.render("request_list", { 
+        requests, 
+        reqUser: req.user, 
+    })
 }; 
 
-exports.request_detail = (req, res, next) => { 
-    res.send(`NOT IMPLEMENTED: req detail: ${req.params.id}`) 
+exports.request_detail = async (req, res, next) => { 
+    async.parallel({ 
+        async request () { 
+            const re = await Request.findById(req.params.id).populate("user"); 
+            return re; 
+        }, 
+
+        async numberOfPosts () { 
+            const p = await Post.countDocuments({ user: req.params.id });
+            return p; 
+        },
+    }, 
+        (err, results) => { 
+            if(err) return next(err);
+            
+            res.render("request_detail", { 
+                request: results.request, 
+                numberOfPosts: results.numberOfPosts, 
+            })
+        }
+    )
 }; 
 
 exports.request_create_get = (req, res, next) => { 
