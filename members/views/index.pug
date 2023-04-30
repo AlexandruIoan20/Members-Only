@@ -9,9 +9,18 @@ html(lang="en")
   body 
   block content
   header 
-    h1 Members Only 
-    p.p-button
-      a.post-in-profile(href=`${user.url}`) View Profile 
+    article.main-header
+      h1 Members Only 
+      p.p-button
+        a.post-in-profile(href=`${user.url}`) View Profile 
+    nav 
+      ul 
+        li 
+          a(href="/general") ⌂
+        li 
+          a(href=user.url) A 
+        li 
+          a(href="/general/info") i
     
   main 
     section.navigate

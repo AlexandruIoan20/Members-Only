@@ -20,6 +20,7 @@ require("dotenv").config();
 
 
 // TO DO: 
+// Fix main navbar - home - profile - info 
 // Cerere de avansare in grad 
 // Pagina cu reguli pentru avansare in grad 
 // Ideea principala - daca esti user nu poti vedea cine posteaza povestile 

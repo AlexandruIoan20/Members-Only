@@ -1,0 +1,3 @@
+Main Nav Bar 
+    Home: ⌂
+    Info: &#128712;
