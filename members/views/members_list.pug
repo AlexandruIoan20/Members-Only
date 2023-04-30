@@ -9,7 +9,15 @@ html(lang="en")
     body 
     block content 
         header  
-            h1 View all members 
+            article.main-header
+                h1 View all members 
+            ul 
+                li 
+                    a(href="/general") ⌂
+                li 
+                    a(href=user.url) A 
+                li 
+                    a(href="/general/info") i
 
         main.members-list
             ul 

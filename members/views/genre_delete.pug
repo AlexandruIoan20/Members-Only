@@ -9,7 +9,16 @@ html(lang="en")
     body 
     block content 
         header
-            h1 Delete Genre #{genre.title} 
+            article.main-header
+                h1 Delete Genre #{genre.title} 
+            nav 
+        ul 
+            li 
+                a(href="/general") ⌂
+            li 
+                a(href=user.url) A 
+            li 
+                a(href="/general/info") i
         
         main 
             p.info Are you sure you want to delete this genre? 

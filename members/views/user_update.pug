@@ -9,7 +9,15 @@ html(lang="en")
     body 
     block content 
     header 
-        h1 Update informations for #{username} 
+        article.main-header
+            h1 Update informations for #{username}  
+        ul 
+            li 
+                a(href="/general") ⌂
+            li 
+                a(href=`/general/profiles/${user._id}`) A 
+            li 
+                a(href="/general/info") i
     
     main 
     form(action="", method = "POST") 

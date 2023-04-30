@@ -9,11 +9,19 @@ html(lang="en")
     body 
     block content 
         header  
-            h1 Available genres 
-            if genres.length 
-                p #{genres.length} genres. 
-            else 
-                p 0 genres. 
+            article.main-header
+                h1 Available genres 
+                if genres.length 
+                    p #{genres.length} genres. 
+                else 
+                    p 0 genres. 
+            ul 
+                li 
+                    a(href="/general") ⌂
+                li 
+                    a(href=user.url) A 
+                li 
+                    a(href="/general/info") i
         main 
             ul.genres 
                 for genre in genres 
