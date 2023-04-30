@@ -9,6 +9,7 @@ const auth_controller = require("../controllers/auth_controller");
 const checkAuthenticated = require("../middleware/checkAuth");
 const checkNotAuthenticated = require("../middleware/checkNotAuth");
 const admin_controller = require("../controllers/admin_controller");
+const request_controller = require("../controllers/request_controller");
 
 const { isMember, isAdmin, isOwner } = require("../middleware/grade_security");
 
@@ -58,5 +59,18 @@ router.get("/profiles/:id/:postId/update",  post_controller.update_post_get);
 router.post("/profiles/:id/:postId/update", post_controller.update_post_post);
 
 router.get("/profiles/:id/:postId", post_controller.post_detail);
+
+// Request Controller 
+router.get("/requests/create", request_controller.request_create_get); 
+router.post("/requests/create", request_controller.request_create_post); 
+
+router.get("/requests/:id/delete", request_controller.request_delete_get); 
+router.post("/requests/:id/delete", request_controller.request_delete_post); 
+
+router.get("/requests/:id/update", request_controller.request_update_get); 
+router.post("/requests/:id/update", request_controller.request_update_post); 
+
+router.get("/requests", request_controller.request_list); 
+router.get("/requests/:id", request_controller.request_detail);
 
 module.exports = router; 
