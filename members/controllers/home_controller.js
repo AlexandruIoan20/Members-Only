@@ -52,3 +52,9 @@ exports.users_list = async (req, res, next) => {
     })
 }
 
+
+exports.info_page = (req, res, next) => { 
+    res.render("info_page", { 
+        user: req.user,
+    });
+}

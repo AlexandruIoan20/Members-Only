@@ -1,0 +1,26 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        title Document
+    body 
+        block content 
+            header  
+                article.main-header
+                    h1 Info 
+                    p.p-button
+                        a.post-in-profile(href=`${user.url}`) View Profile 
+                nav 
+                    ul 
+                        li 
+                        a(href="/general") ⌂
+                        li 
+                        a(href="/general/info") i 
+
+            main 
+                p.info In order to become a member, you need to write 10 posts. Then your request will be accepted. 
+                p.info  NOTE: You need to do your best with the request. An admin could reject you unless you write something at least average. 
+                    

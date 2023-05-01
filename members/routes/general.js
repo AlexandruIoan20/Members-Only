@@ -15,6 +15,7 @@ const { isMember, isAdmin, isOwner } = require("../middleware/grade_security");
 
 router.get("/", checkAuthenticated, home_controller.index); 
 router.get("/users", checkAuthenticated, isAdmin, home_controller.users_list);
+router.get("/info", checkAuthenticated, home_controller.info_page); 
 
 // Auth Routes
 router.get("/login", checkNotAuthenticated, auth_controller.login_get);
