@@ -20,15 +20,18 @@ html(lang="en")
 
             main 
                 section.info 
-                    p.post-info  #{request.user.username}
+                    p.post-info  #{request.user.username} - #{request.user.grade}
+                    p.post-info  #{request.status}
                     p.post-info  #{numberOfPosts} posts
                 p.post-description #{request.description}
 
 
-                if post.user.username == reqUser.username || reqUser.grade == "Admin" || reqUser.grade == "Owner"
+                if request.user.username == reqUser.username || reqUser.grade == "Admin" || reqUser.grade == "Owner"
                     hr
                     section.developer 
                         p
-                            a.button(href=`${post.url}/delete`) Delete 
-                        p 
-                            a.button(href=`${post.url}/update`) Edit  
+                            a.button(href=`${request.url}/delete`) Delete 
+
+                            if request.user.username == reqUser.username
+                                p 
+                                    a.button(href=`${request.url}/update`) Edit  

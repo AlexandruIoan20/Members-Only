@@ -10,7 +10,7 @@ html(lang="en")
         block content 
             header 
                 article.main-header
-                    h1 Requests
+                    h1 Requests - #{reqUser.username}
                 nav  
                     ul 
                         li 
@@ -19,13 +19,12 @@ html(lang="en")
                             a(href="/general/info") i
 
             main 
-                if reqUser.grade == "Admin" || reqUser.grade == "Owner"
-                    if requests.length 
-                        for request in requests 
-                            p.info.req #{request.user.username} - #{request.user.grade} #[strong #{request.status}]
-                                    a.button(href=`${request.url}`) View 
-                        
-                                
-                                
-                    else 
-                        p No requests yet. 
+                if requests.length 
+                    for request in requests 
+                        p.info.req #{request.title}   #[strong #{request.status}]
+                                a.button(href=`${request.url}`) View 
+                    
+                            
+                            
+                else 
+                    p No requests yet. 

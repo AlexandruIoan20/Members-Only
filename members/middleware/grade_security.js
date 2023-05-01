@@ -24,7 +24,7 @@ const SECURITY = {
      isOwner: (req, res, next) => { 
         if(req.user.grade == "Owner") return next (); 
         res.redirect('back');
-    }
+    }, 
 }
 
 module.exports = SECURITY; 

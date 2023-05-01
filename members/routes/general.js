@@ -37,6 +37,7 @@ router.get("/genres", checkAuthenticated, genre_controller.genre_list);
 router.get("/genres/:id", checkAuthenticated, genre_controller.genre_detail);
 
 // Profile Controller
+router.get("/profiles/:id/r", request_controller.request_user_list);
 router.get("/profiles/:id/delete", checkAuthenticated,  profile_controller.delete_profile_get);
 router.post("/profiles/:id/delete", checkAuthenticated,  profile_controller.delete_profile_post);
 
