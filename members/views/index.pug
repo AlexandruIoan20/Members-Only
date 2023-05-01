@@ -40,9 +40,10 @@ html(lang="en")
               p.post-title  #{post.title} -
                 p.p-button.p-button-index-post 
                   a.button(href=`${post.url}`) View Post 
-            article.article-post-informations 
-              p.post-info #{post.user.grade}: #{post.user.username} - #{post.postDate_formatted} 
-              p.post-info Genre: #{post.genre.title}
+            if user.grade != "User"
+              article.article-post-informations 
+                p.post-info #{post.user.grade}: #{post.user.username} - #{post.postDate_formatted} 
+                p.post-info Genre: #{post.genre.title}
 
     else 
       p 0 posts available 

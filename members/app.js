@@ -8,9 +8,7 @@ const logger = require('morgan');
 const mongoose = require("mongoose");
 const passport = require("passport"); 
 const session = require("express-session");
-const LocalStrategy = require("passport-local").Strategy; 
 const flash = require("express-flash");
-const bcrypt = require("bcrypt");
 
 // Routers 
 const generalRouter = require("./routes/general");
@@ -20,9 +18,6 @@ require("dotenv").config();
 
 
 // TO DO: 
-// Fix main navbar - home - profile - info 
-  // Fix bug - remove user from navbar
-// Cerere de avansare in grad 
 // Pagina cu reguli pentru avansare in grad 
 // Ideea principala - daca esti user nu poti vedea cine posteaza povestile 
   

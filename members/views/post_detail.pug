@@ -20,8 +20,9 @@ html(lang="en")
 
         main 
             section.info 
-                p.post-info - #{post.user.username}
-                p.post-info Genre: #{post.genre.title}
+                if reqUser.grade != "User"
+                    p.post-info - #{post.user.username}
+                    p.post-info Genre: #{post.genre.title}
 
             p.post-description #{post.description}
 
