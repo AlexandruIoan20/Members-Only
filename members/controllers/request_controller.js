@@ -160,4 +160,42 @@ exports.request_update_post = [
             res.redirect("/general");
         }
     }
-]
+]; 
+
+
+exports.request_modify_status_get = async (req, res, next) => { 
+    if(req.user.grade == "Admin" || req.user.grade == "Owner") { 
+        const request = await Request.findById(req.params.id).exec(); 
+        res.render("request_modify_status", { 
+            pageTitle: `Respond request ${request.title}`, 
+            request: request, 
+            RESPONSES: RESPONSES, 
+        })
+    }
+}
+
+exports.request_modify_status_post = async (req, res, next) => { 
+    const request = await Request.findById(req.params.id).populate("user").exec(); 
+    if(req.body.status == RESPONSES[0]) { 
+        res.render("request_modify_status", { 
+            pageTitle: `Respond request ${request.title}`, 
+            request: request, 
+            RESPONSES: RESPONSES, 
+        })
+    } else  { 
+        const newRequest = new Request({ 
+            title: request.title, 
+            description: request.description, 
+            user: request.user, 
+            status: req.body.status, 
+            _id: request._id, 
+        }); 
+
+        await Request.findByIdAndUpdate(request._id, newRequest); 
+        if(newRequest.status == RESPONSES[1]) { 
+            res.redirect(`${request.user.url}/promote`); 
+        } else { 
+            res.redirect("/general");
+        }
+    }
+}

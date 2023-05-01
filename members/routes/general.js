@@ -71,6 +71,9 @@ router.post("/requests/:id/delete", request_controller.request_delete_post);
 router.get("/requests/:id/update", request_controller.request_update_get); 
 router.post("/requests/:id/update", request_controller.request_update_post); 
 
+router.get("/requests/:id/modify", isAdmin || isOwner, request_controller.request_modify_status_get); 
+router.post("/requests/:id/modify", isAdmin || isOwner, request_controller.request_modify_status_post);
+
 router.get("/requests", request_controller.request_list); 
 router.get("/requests/:id", request_controller.request_detail);
 

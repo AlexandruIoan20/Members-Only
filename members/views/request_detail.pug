@@ -32,6 +32,10 @@ html(lang="en")
                         p
                             a.button(href=`${request.url}/delete`) Delete 
 
-                            if request.user.username == reqUser.username
+                            if request.user.username == reqUser.username && request.status == "Pending"
                                 p 
                                     a.button(href=`${request.url}/update`) Edit  
+
+                            if reqUser.grade == "Admin" || reqUser.grade == "Owner"
+                                p 
+                                    a.button(href = `${request.url}/modify`) Respond 
