@@ -94,22 +94,27 @@ exports.request_create_post = [
 exports.request_delete_get = async (req, res, next) => { 
     const request = await Request.findById(req.params.id).populate("user").exec(); 
 
-    res.render("request_delete", { 
-        pageTitle: `Delete ${request.title}`, 
-        request: request, 
-        reqUser: req.user, 
-    })
+    if(request.status == RESPONSES[0]) { 
+        res.render("request_delete", { 
+            pageTitle: `Delete ${request.title}`, 
+            request: request, 
+            reqUser: req.user, 
+        })
+    }
 }; 
 
 exports.request_delete_post = async (req, res, next) => { 
-    await Request.findByIdAndDelete(req.params.id); 
+    const request = await Request.findById(req.params.id).exec(); 
+    if(request.status == RESPONSES[0]) { 
+        await Request.findByIdAndDelete(req.params.id); 
+    }
     res.redirect("/general");
 }; 
 
 exports.request_update_get = async (req, res, next) => { 
     const request = await Request.findById(req.params.id); 
 
-    if(request.status == "Pending")
+    if(request.status == RESPONSES[0])
         res.render("request_form", { 
             pageTitle: `Edit Request`, 
             title: request.title, 
@@ -147,7 +152,12 @@ exports.request_update_post = [
             })
         }; 
     
-        await Request.findByIdAndUpdate(request._id, request);
-        res.redirect(request.url);
+        const r = await Request.findById(request._id, request).exec(); 
+        if(r.status == RESPONSES[0]) { 
+            await Request.findByIdAndUpdate(request._id, request);
+            res.redirect(request.url);
+        } else { 
+            res.redirect("/general");
+        }
     }
 ]
